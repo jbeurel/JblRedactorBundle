@@ -1,0 +1,6 @@
+services:
+    jbl.twig.redactor_extension:
+        class: Jbl\RedactorBundle\Twig\Extension\JblRedactorExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
