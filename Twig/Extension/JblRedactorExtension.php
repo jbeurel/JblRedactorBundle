@@ -35,7 +35,8 @@ class JblRedactorExtension extends Twig_Extension
         $config = $this->getParameter('jbl_redactor.config');
 
         return $this->getService('templating')->render('JblRedactorBundle:Script:init.html.twig', array(
-            'redactor_config' => json_encode($config)
+            'redactor_config' => json_encode($config),
+            'redactor_config_lang' => isset($config['lang']) ? $config['lang'] : false,
         ));
 
     }

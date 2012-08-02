@@ -1,3 +1,6 @@
+{% if redactor_config_lang %}
+    <script type="text/javascript" src="{{ asset('bundles/jblredactor/js/langs/'~ redactor_config_lang ~'.js') }}" charset="utf-8"></script>
+{% endif %}
 <script type="text/javascript">
     $(document).ready(
         function()
