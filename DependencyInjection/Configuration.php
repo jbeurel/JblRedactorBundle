@@ -23,7 +23,6 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('lang')->end()
                 ->scalarNode('direction')->end()
-                ->booleanNode('toolbar')->end()
                 ->variableNode('buttons')->end()
                 ->booleanNode('source')->end()
                 ->booleanNode('focus')->end()
