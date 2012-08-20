@@ -1,6 +1,6 @@
 # JblRedactorBundle
 
-This bundle integrates [Redactor][] WYSIWYG editor to your Symfony2 project.
+This bundle integrates [Redactor][] WYSIWYG editor to your Symfony2 project. (v8.0.2)
 
   [Redactor]: http://redactorjs.com
 
