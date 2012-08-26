@@ -34,6 +34,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('interval')->end()
                 ->scalarNode('imageGetJson')->end()
                 ->scalarNode('imageUpload')->end()
+                ->scalarNode('imageUploadRoute')->end()
                 ->scalarNode('fileUpload')->end()
                 ->booleanNode('overlay')->end()
                 ->booleanNode('observeImages')->end()

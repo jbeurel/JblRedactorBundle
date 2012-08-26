@@ -55,6 +55,7 @@ Configure your application. This is the default settings list:
     	interval: 60
     	imageGetJson: false
     	imageUpload: false
+        imageUploadRoute: false
     	fileUpload: false
     	overlay: true
     	observeImages: true
@@ -64,7 +65,10 @@ Configure your application. This is the default settings list:
     	allowebTags: ["code", "span", "div", "label", "a", "br", "p", "b", "i", "del", "strike", "img", "video", "audio", "iframe", "object", "embed", "param", "blockquote", "mark", "cite", "small", "ul", "ol", "li", "hr", "dl", "dt", "dd", "sup", "sub", "big", "pre", "code", "figure", "figcaption", "strong", "em", "table", "tr", "td", "th", "tbody", "thead", "tfoot", "h1", "h2", "h3", "h4", "h5", "h6"]
     	mobile: true
 
+`imageUploadRoute` overrides the imageUpload URL by generate a URL from a Symfony2 route name.
+
 Available configuration options may be found in Redactor's [configuration documentation][].
+
 
 [configuration documentation]: http://redactorjs.com/docs/settings
 
