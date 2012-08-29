@@ -33,6 +33,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('autosave')->end()
                 ->scalarNode('interval')->end()
                 ->scalarNode('imageGetJson')->end()
+                ->scalarNode('imageGetJsonRoute')->end()
                 ->scalarNode('imageUpload')->end()
                 ->scalarNode('imageUploadRoute')->end()
                 ->scalarNode('fileUpload')->end()

@@ -39,6 +39,11 @@ class JblRedactorExtension extends Twig_Extension
             unset($config['imageUploadRoute']);
         }
 
+        if(isset($config['imageGetJsonRoute'])) {
+            $config['imageGetJson'] = $this->getService('router')->generate($config['imageGetJsonRoute']);
+            unset($config['imageGetJsonRoute']);
+        }
+
         return $this->getService('templating')->render('JblRedactorBundle:Script:init.html.twig', array(
             'redactor_config' => json_encode($config),
             'redactor_config_lang' => isset($config['lang']) ? $config['lang'] : false,
