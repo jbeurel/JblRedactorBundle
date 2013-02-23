@@ -31,32 +31,109 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>JblRedactorBundle</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>This bundle integrates <a href="http://redactorjs.com">Redactor</a> WYSIWYG editor to your Symfony2 project. (v8.0.2)</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h2>Installation</h2>
+
+<p>Download the code by adding the git module or editing the deps file in the root project.</p>
+
+<h3>Download via git submodule</h3>
+
+<pre><code>git submodule add git://github.com/jbeurel/JblRedactorBundle.git vendor/bundles/Jbl/RedactorBundle
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>Download by editing deps file</h3>
 
-<h3>Designer Templates</h3>
+<pre><code>[JblRedactorBundle]
+    git=git://github.com/jbeurel/JblRedactorBundle.git
+    target=/bundles/Jbl/RedactorBundle
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Modify your autoloader </p>
 
-<h3>Rather Drive Stick?</h3>
+<pre><code>// app/autoload.php
+$loader-&gt;registerNamespaces(array(
+    // ...
+    'Jbl' =&gt; __DIR__.'/../vendor/bundles',
+));
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Instantiate Bundle in your app/AppKernel.php file</p>
 
-<h3>Authors and Contributors</h3>
+<pre><code>public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Jbl\RedactorBundle\JblRedactorBundle(),
+    );
+}
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h2>Configuration</h2>
 
-<h3>Support or Contact</h3>
+<p>Configure your application. This is the default settings list:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<pre><code>// app/config.yml
+jbl_redactor:
+    lang: en
+    direction: ltr
+    buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'image', 'video', 'file', 'table', 'link', '|', 'fontcolor', 'backcolor', '|',  'alignleft', 'aligncenter', 'alignright', 'justify', '|', 'horizontalrule']
+    source: true
+    focus: false
+    autoresize: true
+    fixed: false
+    convertLinks: true
+    convertDivs: true
+    autosave: false
+    interval: 60
+    imageGetJson: false
+    imageUpload: false
+    imageUploadRoute: false
+    fileUpload: false
+    overlay: true
+    observeImages: true
+    colors: ['#ffffff', '#000000', '#eeece1', '#1f497d', '#4f81bd', '#c0504d', '#9bbb59', '#8064a2', '#4bacc6', '#f79646', '#ffff00', '#f2f2f2', '#7f7f7f', '#ddd9c3', '#c6d9f0', '#dbe5f1', '#f2dcdb', '#ebf1dd', '#e5e0ec', '#dbeef3', '#fdeada', '#fff2ca', '#d8d8d8', '#595959', '#c4bd97', '#8db3e2', '#b8cce4', '#e5b9b7', '#d7e3bc', '#ccc1d9', '#b7dde8', '#fbd5b5', '#ffe694', '#bfbfbf', '#3f3f3f', '#938953', '#548dd4', '#95b3d7', '#d99694', '#c3d69b', '#b2a2c7', '#b7dde8', '#fac08f', '#f2c314', '#a5a5a5', '#262626', '#494429', '#17365d', '#366092', '#953734', '#76923c', '#5f497a', '#92cddc', '#e36c09', '#c09100', '#7f7f7f', '#0c0c0c', '#1d1b10', '#0f243e', '#244061', '#632423', '#4f6128', '#3f3151', '#31859b', '#974806', '#7f6000'] 
+    air: false
+    airBunttons: ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'fontcolor', 'backcolor']
+    allowebTags: ["code", "span", "div", "label", "a", "br", "p", "b", "i", "del", "strike", "img", "video", "audio", "iframe", "object", "embed", "param", "blockquote", "mark", "cite", "small", "ul", "ol", "li", "hr", "dl", "dt", "dd", "sup", "sub", "big", "pre", "code", "figure", "figcaption", "strong", "em", "table", "tr", "td", "th", "tbody", "thead", "tfoot", "h1", "h2", "h3", "h4", "h5", "h6"]
+    mobile: true
+</code></pre>
+
+<p><code>imageUploadRoute</code> overrides the imageUpload URL by generate a URL from a Symfony2 route name.</p>
+
+<p>Available configuration options may be found in Redactor's <a href="http://redactorjs.com/docs/settings">configuration documentation</a>.</p>
+
+<p>Insert redactor js/css files in your layout.</p>
+
+<pre><code>&lt;link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/jblredactor/css/redactor.css') }}"/&gt;
+&lt;script type="text/javascript" src="{{ asset('bundles/jblredactor/js/redactor.min.js') }}" charset="utf-8"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Add class "redactor" to textarea field to initialize Redactor.</p>
+
+<pre><code>&lt;textarea class="redactor"&gt;&lt;/textarea&gt;
+</code></pre>
+
+<p>If you are using FormBuilder, use an array to add the class.</p>
+
+<pre><code>$builder-&gt;add('content', 'textarea', array(
+    'attr' =&gt; array(
+        'class' =&gt; 'redactor'
+    )
+));
+</code></pre>
+
+<p>Install bundle web assets under a public web directory with this command.</p>
+
+<pre><code>php app/console assets:install web/
+</code></pre>
+
+<p>Finally, add this script to your layout.</p>
+
+<pre><code>{{ redactor_init() }}
+</code></pre>
       </section>
     </div>
 
