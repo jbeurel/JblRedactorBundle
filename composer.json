@@ -1,0 +1,19 @@
+{
+    "name": "jbl/redactor-bundle",
+    "type": "symfony-bundle",
+    "description": "Redactor WYSIWYG editor to your Symfony2 project.",
+    "homepage": "https://github.com/jbeurel/JblRedactorBundle",
+    "keywords":["Form", "Redactor", "wysiwyg"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan Beurel",
+            "homepage": "http://jonathanbeurel.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Jbl\\RedactorBundle": "" }
+    },
+    "target-dir": "Jbl/RedactorBundle"
+}
